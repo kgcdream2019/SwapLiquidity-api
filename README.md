@@ -17,14 +17,14 @@ only by WBNB in the pairs.
 
 The canonical WBNB address used by the BSCswap interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
 
-## [`/summary`](https://api.bscswap.com/summary)
+## [`/summary`](https://api.swapliquidity.org/summary)
 
 Returns data for the top ~1000 BSCswap pairs, sorted by reserves.
 Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.bscswap.com/summary`
+`GET https://api.swapliquidity.org/summary`
 
 ### Response
 
@@ -40,14 +40,14 @@ Results are edge cached for 15 minutes.
 }
 ```
 
-## [`/totalliquidity`](https://api.bscswap.com/totalliquidity)
+## [`/totalliquidity`](https://api.swapliquidity.org/totalliquidity)
 
 Returns the total liquidity in USD value on BSCswap.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.bscswap.com/totalliquidity`
+`GET https://api.swapliquidity.org/totalliquidity`
 
 ### Response
 
@@ -59,14 +59,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/assets`](https://api.bscswap.com/assets)
+## [`/assets`](https://api.swapliquidity.org/assets)
 
 Returns the tokens in the top ~1000 pairs on BSCswap, sorted by reserves.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.bscswap.com/assets`
+`GET https://api.swapliquidity.org/assets`
 
 ### Response
 
@@ -84,14 +84,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/tickers`](https://api.bscswap.com/tickers)
+## [`/tickers`](https://api.swapliquidity.org/tickers)
 
 Returns data for the top ~1000 BSCswap pairs, sorted by reserves.
 Results are edge cached for 1 minute.
 
 ### Request
 
-`GET https://api.bscswap.com/tickers`
+`GET https://api.swapliquidity.org/tickers`
 
 ### Response
 
@@ -121,7 +121,7 @@ Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.bscswap.com/orderbook/:pair`
+`GET https://api.swapliquidity.org/orderbook/:pair`
 
 ### URL Parameters
 
@@ -162,7 +162,7 @@ trade types (types `"???"` and `"borrow-both"`).
 
 ### Request
 
-`GET https://api.bscswap.com/trades/:pair`
+`GET https://api.swapliquidity.org/trades/:pair`
 
 ### Response
 

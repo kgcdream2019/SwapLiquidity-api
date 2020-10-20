@@ -1,7 +1,7 @@
 {
   "name": "bscswap-api",
   "version": 2,
-  "alias": "api.bscswap.com",
+  "alias": "api.swapliquidity.org",
   "builds": [{ "src": "src/**/*.ts", "use": "@now/node" }],
   "routes": [
     { "src": "/totalliquidity", "dest": "/src/totalliquidity.ts", "methods": ["GET"] },
