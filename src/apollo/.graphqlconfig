@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "BSCswap": {
-        "url": "https://subgraph.bscswap.com/subgraphs/name/bscswap/bscswap-subgraph",
+        "url": "https://subgraph.swapliquidity.org/subgraphs/name/swapliquidity/subgraph",
         "headers": {
           "user-agent": "JS GraphQL"
         },
