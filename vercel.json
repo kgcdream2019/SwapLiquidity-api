@@ -1,0 +1,23 @@
+{
+  "name": "bscswap-api",
+  "version": 2,
+  "alias": "api.bscswap.com",
+  "builds": [{ "src": "src/**/*.ts", "use": "@now/node" }],
+  "routes": [
+    { "src": "/totalliquidity", "dest": "/src/totalliquidity.ts", "methods": ["GET"] },
+    { "src": "/summary", "dest": "/src/summary.ts", "methods": ["GET"] },
+    { "src": "/assets", "dest": "/src/assets.ts", "methods": ["GET"] },
+    { "src": "/tickers", "dest": "/src/tickers.ts", "methods": ["GET"] },
+    {
+      "src": "/orderbook/(?<pair>.*)",
+      "dest": "/src/orderbook.ts?pair=$pair",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/trades/(?<pair>.*)",
+      "dest": "/src/trades.ts?pair=$pair",
+      "methods": ["GET"]
+    },
+    {"src": "/.*", "dest": "/src/404.ts"}
+  ]
+}

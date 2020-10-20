@@ -1,0 +1,38 @@
+{
+  "name": "bscswap-api",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@ethersproject/address": "^5.0.0-beta.125",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link-http": "^1.5.15",
+    "bignumber.js": "^9.0.0",
+    "graphql-tag": "^2.10.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.15.4",
+    "@graphql-codegen/typescript": "1.15.4",
+    "@graphql-codegen/typescript-operations": "^1.15.4",
+    "@now/node": "^0.10.0",
+    "@types/node-fetch": "^2.3.7",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^5.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "graphql": "^15.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.2"
+  },
+  "scripts": {
+    "lint:base": "yarn eslint ./src/**/*.ts",
+    "format:base": "yarn prettier ./src/**/*.ts",
+    "fix:lint": "yarn lint:base --fix",
+    "fix:format": "yarn format:base --write",
+    "fix:all": "yarn fix:lint && yarn fix:format",
+    "check:lint": "yarn lint:base",
+    "check:format": "yarn format:base --check",
+    "check:all": "yarn check:lint && yarn check:format",
+    "generate": "graphql-codegen --config src/apollo/codegen.yml"
+  }
+}
