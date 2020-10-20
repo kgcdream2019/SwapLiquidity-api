@@ -1,5 +1,5 @@
 {
-  "name": "bscswap-api",
+  "name": "swapliquidity-api",
   "version": 2,
   "alias": "api.swapliquidity.org",
   "builds": [{ "src": "src/**/*.ts", "use": "@now/node" }],
