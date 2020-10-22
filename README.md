@@ -1,30 +1,30 @@
-# BSCswap API
+# SwapLiquidity API
 
-The BSCswap API is a set of endpoints used by market aggregators (e.g. coinmarketcap.com) to surface BSCswap liquidity
+The SwapLiquidity API is a set of endpoints used by market aggregators (e.g. coinmarketcap.com) to surface SwapLiquidity liquidity
 and volume information. All information is fetched from the underlying subgraphs.
 
 The API is designed around the CoinMarketCap
 [requirements document](https://docs.google.com/document/d/1S4urpzUnO2t7DmS_1dc4EL4tgnnbTObPYXvDeBnukCg).
 
-Prefer the BSCswap subgraph for any BSCswap queries whenever possible.
+Prefer the SwapLiquidity subgraph for any SwapLiquidity queries whenever possible.
 
-BSCswap Subgraph: https://github.com/bscswap/bscswap-subgraph
+SwapLiquidity Subgraph: https://github.com/justliquidity/SwapLiquidity-subgraph
 
-# BSCswap Endpoints
+# SwapLiquidity Endpoints
 
-All BSCswap pairs consist of two different tokens. BNB is not a native currency in BSCswap, and is represented
+All SwapLiquidity pairs consist of two different tokens. BNB is not a native currency in SwapLiquidity, and is represented
 only by WBNB in the pairs.
 
-The canonical WBNB address used by the BSCswap interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
+The canonical WBNB address used by the SwapLiquidity interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
 
-## [`/summary`](https://api.swapliquidity.org/summary)
+## [`/summary`](https://api.justliquidity.tech/summary)
 
-Returns data for the top ~1000 BSCswap pairs, sorted by reserves.
+Returns data for the top ~1000 SwapLiquidity pairs, sorted by reserves.
 Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.swapliquidity.org/summary`
+`GET https://api.justliquidity.tech/summary`
 
 ### Response
 
@@ -40,14 +40,14 @@ Results are edge cached for 15 minutes.
 }
 ```
 
-## [`/totalliquidity`](https://api.swapliquidity.org/totalliquidity)
+## [`/totalliquidity`](https://api.justliquidity.tech/totalliquidity)
 
-Returns the total liquidity in USD value on BSCswap.
+Returns the total liquidity in USD value on SwapLiquidity.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.swapliquidity.org/totalliquidity`
+`GET https://api.justliquidity.tech/totalliquidity`
 
 ### Response
 
@@ -59,14 +59,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/assets`](https://api.swapliquidity.org/assets)
+## [`/assets`](https://api.justliquidity.tech/assets)
 
-Returns the tokens in the top ~1000 pairs on BSCswap, sorted by reserves.
+Returns the tokens in the top ~1000 pairs on SwapLiquidity, sorted by reserves.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.swapliquidity.org/assets`
+`GET https://api.justliquidity.tech/assets`
 
 ### Response
 
@@ -84,14 +84,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/tickers`](https://api.swapliquidity.org/tickers)
+## [`/tickers`](https://api.justliquidity.tech/tickers)
 
-Returns data for the top ~1000 BSCswap pairs, sorted by reserves.
+Returns data for the top ~1000 SwapLiquidity pairs, sorted by reserves.
 Results are edge cached for 1 minute.
 
 ### Request
 
-`GET https://api.swapliquidity.org/tickers`
+`GET https://api.justliquidity.tech/tickers`
 
 ### Response
 
@@ -114,14 +114,14 @@ Results are edge cached for 1 minute.
 
 ## `/orderbook/:pair`
 
-Returns simulated orderbook data for the given BSCswap pair.
-Since BSCswap has a continuous orderbook, fixed amounts in an interval are chosen for bids and asks,
-and prices are derived from the BSCswap formula (accounting for both slippage and fees paid to LPs).
+Returns simulated orderbook data for the given SwapLiquidity pair.
+Since SwapLiquidity has a continuous orderbook, fixed amounts in an interval are chosen for bids and asks,
+and prices are derived from the SwapLiquidity formula (accounting for both slippage and fees paid to LPs).
 Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.swapliquidity.org/orderbook/:pair`
+`GET https://api.justliquidity.tech/orderbook/:pair`
 
 ### URL Parameters
 
@@ -147,13 +147,13 @@ Results are edge cached for 15 minutes.
 
 ## `/trades/:pair`
 
-Returns all swaps in the last 24 hours for the given BSCswap pair.
+Returns all swaps in the last 24 hours for the given SwapLiquidity pair.
 Results are edge cached for 15 minutes.
 
 The pair address is the address of the two tokens in either order.
 The first address is considered the base in the response.
 
-Note because BSCswap supports flash swaps and borrowing of both tokens in a pair, you may wish to exclude these
+Note because SwapLiquidity supports flash swaps and borrowing of both tokens in a pair, you may wish to exclude these
 trade types (types `"???"` and `"borrow-both"`).
 
 ### URL Parameters
@@ -162,7 +162,7 @@ trade types (types `"???"` and `"borrow-both"`).
 
 ### Request
 
-`GET https://api.swapliquidity.org/trades/:pair`
+`GET https://api.justliquidity.tech/trades/:pair`
 
 ### Response
 
