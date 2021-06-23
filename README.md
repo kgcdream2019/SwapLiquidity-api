@@ -1,4 +1,4 @@
-# SwapLiquidity API
+# SwapLiquidity API 
 
 The SwapLiquidity API is a set of endpoints used by market aggregators (e.g. coinmarketcap.com) to surface SwapLiquidity liquidity
 and volume information. All information is fetched from the underlying subgraphs.
