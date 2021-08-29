@@ -2,11 +2,13 @@
   "name": "swapliquidity-api",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@ethersproject/address": "^5.0.0-beta.125",
+    "@ethersproject/address": "^5.4.0",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
     "apollo-link-http": "^1.5.15",
     "bignumber.js": "^9.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "graphql-tag": "^2.10.1",
     "node-fetch": "^2.6.0"
   },
@@ -25,6 +27,7 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
+    "start": "npx ts-node index.js",
     "lint:base": "yarn eslint ./src/**/*.ts",
     "format:base": "yarn prettier ./src/**/*.ts",
     "fix:lint": "yarn lint:base --fix",

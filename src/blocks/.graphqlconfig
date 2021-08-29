@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "BSC Blocks": {
-        "url": "https://subgraph.bscswap.com/subgraphs/name/bscswap/bsc-blocks-timestamp",
+        "url": "https://subgraph.swapliquidity.org/subgraphs/name/julswap/bsc-blocks",
         "headers": {
           "user-agent": "JS GraphQL"
         },
