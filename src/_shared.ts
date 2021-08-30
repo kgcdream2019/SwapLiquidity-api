@@ -29,7 +29,7 @@ const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
 const DAY = 24 * HOUR
-const deltaTimeStamp = require('../config.js').startBlockTimestamp
+const deltaTimeStamp = 86400
 
 export function get24HoursAgo(): number {
   return Math.floor((Date.now() - DAY) / 1000)
