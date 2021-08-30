@@ -5,6 +5,7 @@ import summary from './src/summary'
 import tickers from './src/tickers'
 import totalliquidity from './src/totalliquidity'
 import trades from './src/trades'
+import e404 from './src/404'
 
 const router = require('express').Router()
 
@@ -15,6 +16,14 @@ router.get('/summary', summary)
 router.get('/tickers', tickers)
 router.get('/totalliquidity', totalliquidity)
 router.get('/trades', trades)
+
+router.get('/orderbook/:pair', (req: any, res: any) => {
+  res.redirect('/orderbook?pair=' + req.params.pair)
+})
+router.get('/trades/:pair', (req: any, res: any) => {
+  res.redirect('/trades?pair=' + req.params.pair)
+})
+router.get('/:error', e404)
 
 // router.post('/sendMail', bodyParser.json(), controller.sendMail);
 
