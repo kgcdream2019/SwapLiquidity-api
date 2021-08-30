@@ -18,10 +18,12 @@ router.get('/totalliquidity', totalliquidity)
 router.get('/trades', trades)
 
 router.get('/orderbook/:pair', (req: any, res: any) => {
-  res.redirect('/orderbook?pair=' + req.params.pair)
+  req.query = req.params
+  orderbook(req, res)
 })
 router.get('/trades/:pair', (req: any, res: any) => {
-  res.redirect('/trades?pair=' + req.params.pair)
+  req.query = req.params
+  trades(req, res)
 })
 router.get('/:error', e404)
 
