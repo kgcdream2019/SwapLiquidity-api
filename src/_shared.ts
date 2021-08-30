@@ -47,7 +47,6 @@ export interface MappedDetailedPair extends Pair {
 
 export async function getTopPairs(): Promise<MappedDetailedPair[]> {
   const epochSecond = Math.floor(new Date().getTime() / 1000)
-  console.log('--- deltaTimeStamp', deltaTimeStamp)
   const firstBlock = await getBlockFromTimestamp(epochSecond - deltaTimeStamp)
 
   if (!firstBlock) {
