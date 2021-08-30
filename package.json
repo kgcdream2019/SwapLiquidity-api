@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "npx ts-node index.js",
+    "watch": "npx ts-node index.js --watch",
     "lint:base": "yarn eslint ./src/**/*.ts",
     "format:base": "yarn prettier ./src/**/*.ts",
     "fix:lint": "yarn lint:base --fix",

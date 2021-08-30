@@ -3,7 +3,14 @@ import gql from 'graphql-tag'
 import BLACKLIST from './constants/blacklist'
 
 import client from './apollo/client'
-import { PAIR_RESERVES_BY_TOKENS, PAIRS_VOLUME_QUERY_STRING, SWAPS_BY_PAIR, TOP_PAIRS, PAIR_FROM_TOKENS, TOTAL_LIQUIDITY } from './apollo/queries'
+import {
+  PAIR_RESERVES_BY_TOKENS,
+  PAIRS_VOLUME_QUERY_STRING,
+  SWAPS_BY_PAIR,
+  TOP_PAIRS,
+  PAIR_FROM_TOKENS,
+  TOTAL_LIQUIDITY
+} from './apollo/queries'
 import { getBlockFromTimestamp } from './blocks/queries'
 import {
   PairReservesQuery,
@@ -22,6 +29,7 @@ const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
 const DAY = 24 * HOUR
+const deltaTimeStamp = require('../config.js').startBlockTimestamp
 
 export function get24HoursAgo(): number {
   return Math.floor((Date.now() - DAY) / 1000)
@@ -39,7 +47,8 @@ export interface MappedDetailedPair extends Pair {
 
 export async function getTopPairs(): Promise<MappedDetailedPair[]> {
   const epochSecond = Math.floor(new Date().getTime() / 1000)
-  const firstBlock = await getBlockFromTimestamp(epochSecond - 86400)
+  console.log('--- deltaTimeStamp', deltaTimeStamp)
+  const firstBlock = await getBlockFromTimestamp(epochSecond - deltaTimeStamp)
 
   if (!firstBlock) {
     throw new Error('first block was not fetched')
@@ -165,16 +174,17 @@ export async function getSwaps(tokenA: string, tokenB: string): Promise<SwapMapp
   const _24HoursAgo = get24HoursAgo()
   const [token0, token1] = sortedFormatted(tokenA, tokenB)
 
-  let {data : {
-    pairs : [{id: pairAddress}]
-  }} = await client.query({
+  let {
+    data: {
+      pairs: [{ id: pairAddress }]
+    }
+  } = await client.query({
     query: PAIR_FROM_TOKENS,
     variables: {
       token0,
       token1
     }
   })
-
 
   const sorted = isSorted(tokenA, tokenB)
   let skip = 0
@@ -190,41 +200,37 @@ export async function getSwaps(tokenA: string, tokenB: string): Promise<SwapMapp
           timestamp: _24HoursAgo
         }
       })
-      .then(
-        ({
-          data: {
-            swaps
-          }
-        }): void => {
-          if (!swaps || swaps.length === 0) {
-            finished = true
-          } else {
-            skip += swaps.length
+      .then(({ data: { swaps } }): void => {
+        if (!swaps || swaps.length === 0) {
+          finished = true
+        } else {
+          skip += swaps.length
 
-            results = results.concat(
-              swaps.map(
-                (swap: Swap): SwapMapped => ({
-                  ...swap,
-                  amountAIn: sorted ? swap.amount0In : swap.amount1In,
-                  amountAOut: sorted ? swap.amount0Out : swap.amount1Out,
-                  amountBIn: sorted ? swap.amount1In : swap.amount0In,
-                  amountBOut: sorted ? swap.amount1Out : swap.amount0Out
-                })
-              )
+          results = results.concat(
+            swaps.map(
+              (swap: Swap): SwapMapped => ({
+                ...swap,
+                amountAIn: sorted ? swap.amount0In : swap.amount1In,
+                amountAOut: sorted ? swap.amount0Out : swap.amount1Out,
+                amountBIn: sorted ? swap.amount1In : swap.amount0In,
+                amountBOut: sorted ? swap.amount1Out : swap.amount0Out
+              })
             )
-          }
+          )
         }
-      )
+      })
   }
 
   return results
 }
 
 export async function getTotalLiquidity(): Promise<[number]> {
-    let {data : {
-      bscswapFactories : [{totalLiquidityUSD: result}]
-    }} = await client.query({
-      query: TOTAL_LIQUIDITY
-    })
-    return result
+  let {
+    data: {
+      bscswapFactories: [{ totalLiquidityUSD: result }]
+    }
+  } = await client.query({
+    query: TOTAL_LIQUIDITY
+  })
+  return result
 }
