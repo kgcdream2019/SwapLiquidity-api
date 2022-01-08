@@ -10,6 +10,7 @@ interface ReturnShape {
 
 export default async function(req: NowRequest, res: NowResponse): Promise<void> {
   try {
+
     const pairs = await getTopPairs()
 
     return200(
