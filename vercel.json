@@ -1,7 +1,7 @@
 {
   "name": "swapliquidity-api",
   "version": 2,
-  "alias": "api.justliquidity.tech",
+  "alias": "api-v1.julswap.com",
   "builds": [{ "src": "src/**/*.ts", "use": "@now/node" }],
   "routes": [
     { "src": "/totalliquidity", "dest": "/src/totalliquidity.ts", "methods": ["GET"] },

@@ -17,14 +17,14 @@ only by WBNB in the pairs.
 
 The canonical WBNB address used by the SwapLiquidity interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
 
-## [`/summary`](https://api.justliquidity.tech/summary)
+## [`/summary`](https://api-v1.julswap.com/summary)
 
 Returns data for the top ~1000 SwapLiquidity pairs, sorted by reserves.
 Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.justliquidity.tech/summary`
+`GET https://api-v1.julswap.com/summary`
 
 ### Response
 
@@ -40,14 +40,14 @@ Results are edge cached for 15 minutes.
 }
 ```
 
-## [`/totalliquidity`](https://api.justliquidity.tech/totalliquidity)
+## [`/totalliquidity`](https://api-v1.julswap.com/totalliquidity)
 
 Returns the total liquidity in USD value on SwapLiquidity.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.justliquidity.tech/totalliquidity`
+`GET https://api-v1.julswap.com/totalliquidity`
 
 ### Response
 
@@ -59,14 +59,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/assets`](https://api.justliquidity.tech/assets)
+## [`/assets`](https://api-v1.julswap.com/assets)
 
 Returns the tokens in the top ~1000 pairs on SwapLiquidity, sorted by reserves.
 Results are edge cached for 24 hours.
 
 ### Request
 
-`GET https://api.justliquidity.tech/assets`
+`GET https://api-v1.julswap.com/assets`
 
 ### Response
 
@@ -84,14 +84,14 @@ Results are edge cached for 24 hours.
 }
 ```
 
-## [`/tickers`](https://api.justliquidity.tech/tickers)
+## [`/tickers`](https://api-v1.julswap.com/tickers)
 
 Returns data for the top ~1000 SwapLiquidity pairs, sorted by reserves.
 Results are edge cached for 1 minute.
 
 ### Request
 
-`GET https://api.justliquidity.tech/tickers`
+`GET https://api-v1.julswap.com/tickers`
 
 ### Response
 
@@ -121,7 +121,7 @@ Results are edge cached for 15 minutes.
 
 ### Request
 
-`GET https://api.justliquidity.tech/orderbook/:pair`
+`GET https://api-v1.julswap.com/orderbook/:pair`
 
 ### URL Parameters
 
@@ -162,7 +162,7 @@ trade types (types `"???"` and `"borrow-both"`).
 
 ### Request
 
-`GET https://api.justliquidity.tech/trades/:pair`
+`GET https://api-v1.julswap.com/trades/:pair`
 
 ### Response
 
