@@ -6,7 +6,7 @@ import fetch from 'node-fetch'
 export const blockClient = new ApolloClient({
   link: new HttpLink({
     fetch,
-    uri: 'https://subgraph.swapliquidity.org/subgraphs/name/julswap/bsc-blocks'
+    uri: 'http://127.0.0.1:8000/subgraphs/name/julswap/bsc-blocks'
   }),
   cache: new InMemoryCache()
 })
