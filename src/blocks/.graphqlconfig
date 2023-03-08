@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "BSC Blocks": {
-        "url": "http://127.0.0.1:8000/subgraphs/name/julswap/bsc-blocks",
+        "url": "https://subgraph.swapliquidity.org/subgraphs/name/julswap/bsc-blocks",
         "headers": {
           "user-agent": "JS GraphQL"
         },
