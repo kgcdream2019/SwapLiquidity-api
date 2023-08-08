@@ -6,7 +6,7 @@ import fetch from 'node-fetch'
 export default new ApolloClient({
   link: new HttpLink({
     fetch,
-    uri: 'http://127.0.0.1:8000/subgraphs/name/swapliquidity/subgraph'
+    uri: 'https://api.thegraph.com/subgraphs/name/kgcdream2019/subgraph'
   }),
   cache: new InMemoryCache()
 })
